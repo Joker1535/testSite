@@ -1,0 +1,35 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сайт</title>
+</head>
+<body>
+    <h1>Сайт</h1>
+    <a href="/register">Регистрация</a>
+    <a href="/login">Авторизация</a>
+    <h2>Игра: Guess the Number</h2>
+    <p>Я nghĩаю о числе от 1 до 100. Попробуй угадать его!</p>
+    <input type="number" id="guess" placeholder="Введи число">
+    <button id="submit">Проверить</button>
+    <p id="result"></p>
+
+    <script>
+        let numberToGuess = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        document.getElementById('submit').addEventListener('click', function() {
+            let guess = parseInt(document.getElementById('guess').value);
+            attempts++;
+
+            if (guess < numberToGuess) {
+                document.getElementById('result').innerHTML = 'Твое число слишком мало. Попробуй еще раз!';
+            } else if (guess > numberToGuess) {
+                document.getElementById('result').innerHTML = 'Твое число слишком большое. Попробуй еще раз!';
+            } else {
+                document.getElementById('result').innerHTML = `Поздравляю! Ты угадал число за ${attempts} попыток.`;
+            }
+        });
+    </script>
+</body>
+</html>
